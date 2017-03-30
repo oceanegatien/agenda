@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
-	$('#submit').click(function() {
 		var annuaire = [];
+	$('#submit').click(function() {
 		var person = {	"nom":"",
 						"prenom":"",
 						"age":""};
@@ -10,12 +10,14 @@ $(document).ready(function() {
 		person["age"] = $("#inputAge").val();
 		
 		annuaire.push(person);
+		console.log(annuaire);
+		$('input').val("");
 
-		$("#infoUn").html(person["prenom"]);
-		$("#infoDeux").html(person["nom"]);
-		$("#infoTrois").html(person["age"]);
+
+		$('#personneUn').html('<td>'+ person["prenom"]+'</td>'+ '<td>'+ person["nom"]+'</td>'+'<td>'+ person["age"]+'</td>');
+		
 	});
-	
+
 });
 
 
