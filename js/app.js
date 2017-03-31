@@ -1,10 +1,15 @@
-$(document).ready(function() {
 	var annuaire = [];
 	var i;
-		$('#submit').on('click', function() {
-			var person = {	"nom":"",
+	var person = {	"nom":"",
 							"prenom":"",
 							"age":""};
+		function charger() {
+			var a = localStorage.getItem('annuaire');
+			console.log(annuaire);
+		}
+$(document).ready(function() {
+	charger();
+	$('#submit').on('click', function() {
 			person["nom"] = $("#inputName").val();
 			person["prenom"] = $("#inputFirstName").val();
 			person["age"] = $("#inputAge").val();
@@ -12,28 +17,27 @@ $(document).ready(function() {
 			annuaire.push(person);
 
 			
-		$('input').val("");
-		$('#personneUn').html("");
+	$('input').val("");
+	$('#personneUn').html("");
 		for (i = 0; i < annuaire.length; i++) {
-			console.log(person);
 			var personne = annuaire[i];
-			$('#personneUn').append('<tr id="line'+i+'"><th>'+ personne.nom+'</th><th>'+ personne.prenom+'</th><th>'+ personne.age+'</th><th><button id="btn" type="button" class="btn btn-danger">X</button></th></tr>');
-			}
-			
-			//$('#personneUn').html('<td>'+ person["prenom"]+'</td>'+ '<td>'+ person["nom"]+'</td>'+'<td>'+ person["age"]+'</td>');
-			//return (annuaire[i]);};
-			
-		});
+			$('#personneUn').append('<tr id="line'+i+'"><th>'+ personne.nom+'</th><th>'+ personne.prenom+'</th><th>'+ personne.age+'</th><th><button id="btndel" type="button" class="btn btn-danger">X</button></th></tr>');
 
-	$('tbody').delegate('#btn', 'click', function() {
-		$(this).parent().parent().remove();
-		console.log('hello');
-	});
+localStorage.setItem('annuaire', JSON.stringify(annuaire));
+//var restaurer = JSON.parse(localStorage.getItem('i'));
+    
 			
+		};
+  
+
+	/*$("tbody").delegate('#btndel', "click", function() {
+		$(this).parent().parent().remove();
+			});*/
+	});
 
 });
 
 
 
 
-
+//if ('input' != null)
